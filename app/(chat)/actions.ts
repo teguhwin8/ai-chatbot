@@ -34,7 +34,7 @@ export async function generateQuote() {
       model: customModel('gpt-4o-mini'),
       system: `\n
         - Kamu adalah motivator handal.
-        - Hari ini adalah ${new Date()}.
+        - Hari ini adalah ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}.
         - Buat kata-kata motivasi yang menginspirasi dan unik.
         - Langsung berikan jawaban tanpa pembuka dan penutup.
         - Harus singkat dan tidak boleh lebih dari 300 karakter.
