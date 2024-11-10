@@ -38,10 +38,10 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               className="flex flex-row gap-3 items-center"
             >
               <span className="text-lg font-semibold px-2 hover:bg-muted rounded-md cursor-pointer">
-                Chatbot
+                AI Chatbot
               </span>
             </div>
-            <BetterTooltip content="New Chat" align="start">
+            <BetterTooltip content="Percakapan Baru" align="start">
               <Button
                 variant="ghost"
                 className="p-2 h-fit"

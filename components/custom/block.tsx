@@ -421,7 +421,7 @@ export function Block({
                 </div>
               ) : document ? (
                 <div className="text-sm text-muted-foreground">
-                  {`Updated ${formatDistance(
+                  {`Diperbarui ${formatDistance(
                     new Date(document.createdAt),
                     new Date(),
                     {

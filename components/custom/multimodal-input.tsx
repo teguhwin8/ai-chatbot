@@ -24,14 +24,14 @@ import { Textarea } from '../ui/textarea';
 
 const suggestedActions = [
   {
-    title: 'What is the weather',
-    label: 'in San Francisco?',
-    action: 'What is the weather in San Francisco?',
+    title: 'Bagaimana cuaca hari ini',
+    label: 'di Jakarta?',
+    action: 'Bagaimana cuaca hari ini di Jakarta?',
   },
   {
-    title: 'Help me draft an essay',
-    label: 'about Silicon Valley',
-    action: 'Help me draft a short essay about Silicon Valley',
+    title: 'Bantu saya buatkan essay',
+    label: 'tentang Proses Reproduksi',
+    action: 'Bantu saya buatkan essay tentang Proses Reproduksi',
   },
 ];
 
@@ -259,7 +259,7 @@ export function MultimodalInput({
 
       <Textarea
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="Tambahkan pertanyaan atau saran..."
         value={input}
         onChange={handleInput}
         className={cx(

@@ -248,12 +248,12 @@ export async function POST(request: Request) {
           return {
             id,
             title: document.title,
-            content: 'The document has been updated successfully.',
+            content: 'Dokumen berhasil diperbarui.',
           };
         },
       },
       requestSuggestions: {
-        description: 'Request suggestions for a document',
+        description: 'Meminta saran pembaruan untuk dokumen',
         parameters: z.object({
           documentId: z
             .string()
