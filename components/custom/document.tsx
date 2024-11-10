@@ -6,11 +6,11 @@ import { FileIcon, LoaderIcon, MessageIcon, PencilEditIcon } from './icons';
 const getActionText = (type: 'create' | 'update' | 'request-suggestions') => {
   switch (type) {
     case 'create':
-      return 'Creating';
+      return 'Membuat';
     case 'update':
-      return 'Updating';
+      return 'Memperbarui';
     case 'request-suggestions':
-      return 'Adding suggestions';
+      return 'Menambahkan saran';
     default:
       return null;
   }

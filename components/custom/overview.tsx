@@ -1,9 +1,29 @@
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { Typewriter } from 'react-simple-typewriter';
+
+import { generateQuote } from '@/app/(chat)/actions';
 
 import { MessageIcon, VercelIcon } from './icons';
 
 export const Overview = () => {
+  const [quote, setQuote] = useState('');
+
+  useEffect(() => {
+    const fetchQuote = async () => {
+      try {
+        const generatedQuote = await generateQuote();
+        console.log('Generated Quote:', generatedQuote); // Debugging
+        setQuote(generatedQuote || 'Kutipan tidak tersedia.'); // Fallback jika kosong
+      } catch (error) {
+        setQuote('Selalu ada jalan untuk maju!'); // Fallback jika terjadi error
+      }
+    };
+
+    fetchQuote();
+  }, []);
+
   return (
     <motion.div
       key="overview"
@@ -18,34 +38,30 @@ export const Overview = () => {
           <VercelIcon size={32} />
           <span>+</span>
           <MessageIcon size={32} />
+          <span>+</span>
+          <Image
+            src="/images/teguh-coding.jpg"
+            width={36}
+            height={36}
+            className="rounded-full object-cover"
+            alt="Teguh Coding"
+          />
         </p>
-        <p>
-          This is an{' '}
-          <Link
-            className="font-medium underline underline-offset-4"
-            href="https://github.com/vercel/ai-chatbot"
-            target="_blank"
-          >
-            open source
-          </Link>{' '}
-          chatbot template built with Next.js and the AI SDK by Vercel. It uses
-          the{' '}
-          <code className="rounded-md bg-muted px-1 py-0.5">streamText</code>{' '}
-          function in the server and the{' '}
-          <code className="rounded-md bg-muted px-1 py-0.5">useChat</code> hook
-          on the client to create a seamless chat experience.
-        </p>
-        <p>
-          You can learn more about the AI SDK by visiting the{' '}
-          <Link
-            className="font-medium underline underline-offset-4"
-            href="https://sdk.vercel.ai/docs"
-            target="_blank"
-          >
-            docs
-          </Link>
-          .
-        </p>
+        <div>
+          {quote ? (
+            <Typewriter
+              words={[quote]} // Menampilkan kutipan dengan efek mengetik
+              loop={1} // Animasi akan berjalan 1 kali
+              cursor
+              cursorStyle="|"
+              typeSpeed={50} // Kecepatan mengetik
+              deleteSpeed={30} // Kecepatan menghapus (jika ada animasi hapus)
+              delaySpeed={1000} // Jeda sebelum mengetik ulang (jika loop > 1)
+            />
+          ) : (
+            'Memuat kutipan...' // Tampilkan placeholder sementara
+          )}
+        </div>
       </div>
     </motion.div>
   );
