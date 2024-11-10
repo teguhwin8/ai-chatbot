@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { MessageIcon, VercelIcon } from './icons';
 import Image from 'next/image';
-import { generateQuote } from '@/app/(chat)/actions';
+import { useEffect, useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
+
+import { generateQuote } from '@/app/(chat)/actions';
+
+import { MessageIcon, VercelIcon } from './icons';
 
 export const Overview = () => {
   const [quote, setQuote] = useState('');
