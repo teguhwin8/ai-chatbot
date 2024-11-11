@@ -2,7 +2,6 @@ import { track } from '@vercel/analytics/server';
 import { ipAddress } from '@vercel/functions';
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 
-
 // You can get this endpoint name from the application details on the Kasada Portal.
 const kasadaAPIHostname = 'vercel-endpoint.kasadapolyform.io';
 const kasadaAPIVersion = '2023-01-13-preview';
@@ -54,7 +53,7 @@ async function getKasadaMetadata(request: NextRequest): Promise<{
 
   const headers = new Headers(request.headers);
   headers.delete('x-forwarded-host');
-  headers.set('Host', 'chat.vercel.ai');
+  headers.set('Host', 'gpt.teguhcoding.com');
 
   const headersArray = [...headers.entries()].map(([key, value]) => ({
     key,

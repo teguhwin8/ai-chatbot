@@ -7,7 +7,7 @@ import { KasadaClient } from '@/utils/kasada/kasada-client';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ai.teguhcoding.com'),
+  metadataBase: new URL('https://gpt.teguhcoding.com'),
   title: 'Teguh Coding - AI Chatbot',
   description: 'Next.js chatbot template using the AI SDK.',
 };
