@@ -21,6 +21,8 @@ export async function botProtectionMiddleware(
      * NOTE: Do not pass server actions through bot protection
      */
 
+    return undefined;
+
     if (request.nextUrl.pathname === '/') {
       return undefined;
     }
