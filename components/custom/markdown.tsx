@@ -1,19 +1,45 @@
-import Link from "next/link";
-import React, { memo } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { CopyIcon } from 'lucide-react';
+import Link from 'next/link';
+import React, { memo, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import remarkGfm from 'remark-gfm';
+import { toast } from 'sonner';
+import { useCopyToClipboard } from 'usehooks-ts';
 
 const NonMemoizedMarkdown = ({ children }: { children: string }) => {
+  const [_, copyToClipboard] = useCopyToClipboard();
   const components = {
     code: ({ node, inline, className, children, ...props }: any) => {
-      const match = /language-(\w+)/.exec(className || "");
+      const match = /language-(\w+)/.exec(className || '');
+
       return !inline && match ? (
-        <pre
-          {...props}
-          className={`${className} text-sm w-[80dvw] md:max-w-[500px] overflow-x-scroll bg-zinc-100 p-3 rounded-lg mt-2 dark:bg-zinc-800`}
+        <div
+          className={`${className} relative text-sm w-[80dvw] md:max-w-[98%] overflow-x-auto rounded-lg mt-2`}
         >
-          <code className={match[1]}>{children}</code>
-        </pre>
+          <button
+            onClick={() => {
+              copyToClipboard(children);
+              toast.success('Copied to clipboard!');
+            }}
+            style={{
+              position: 'absolute',
+              right: '10px',
+              top: '10px',
+              backgroundColor: '#f5f5f5',
+              border: 'none',
+              padding: '5px 10px',
+              cursor: 'pointer',
+              borderRadius: '5px',
+            }}
+          >
+            <CopyIcon size={18} />
+          </button>
+          <SyntaxHighlighter language={match[1]} style={a11yDark}>
+            {children}
+          </SyntaxHighlighter>
+        </div>
       ) : (
         <code
           className={`${className} text-sm bg-zinc-100 dark:bg-zinc-800 py-0.5 px-1 rounded-md`}
@@ -116,5 +142,5 @@ const NonMemoizedMarkdown = ({ children }: { children: string }) => {
 
 export const Markdown = memo(
   NonMemoizedMarkdown,
-  (prevProps, nextProps) => prevProps.children === nextProps.children,
+  (prevProps, nextProps) => prevProps.children === nextProps.children
 );

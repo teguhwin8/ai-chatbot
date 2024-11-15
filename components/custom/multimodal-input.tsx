@@ -86,6 +86,7 @@ export function MultimodalInput({
 
   const adjustHeight = () => {
     if (textareaRef.current) {
+      console.log(`${textareaRef.current.scrollHeight + 2}px`);
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight + 2}px`;
     }
@@ -121,6 +122,10 @@ export function MultimodalInput({
   const [uploadQueue, setUploadQueue] = useState<Array<string>>([]);
 
   const submitForm = useCallback(() => {
+    setTimeout(() => {
+      adjustHeight();
+    }, 500);
+
     if (user) {
       window.history.replaceState({}, '', `/chat/${chatId}`);
     }

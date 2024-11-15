@@ -14,10 +14,9 @@ export const Overview = () => {
     const fetchQuote = async () => {
       try {
         const generatedQuote = await generateQuote();
-        console.log('Generated Quote:', generatedQuote); // Debugging
-        setQuote(generatedQuote || 'Kutipan tidak tersedia.'); // Fallback jika kosong
+        setQuote(generatedQuote || 'Kutipan tidak tersedia.');
       } catch (error) {
-        setQuote('Selalu ada jalan untuk maju!'); // Fallback jika terjadi error
+        setQuote('Selalu ada jalan untuk maju!');
       }
     };
 
@@ -48,19 +47,20 @@ export const Overview = () => {
           />
         </p>
         <div>
-          {quote ? (
+          {/* {quote ? (
             <Typewriter
-              words={[quote]} // Menampilkan kutipan dengan efek mengetik
-              loop={1} // Animasi akan berjalan 1 kali
+              words={[quote]}
+              loop={1}
               cursor
               cursorStyle="|"
-              typeSpeed={50} // Kecepatan mengetik
-              deleteSpeed={30} // Kecepatan menghapus (jika ada animasi hapus)
-              delaySpeed={1000} // Jeda sebelum mengetik ulang (jika loop > 1)
+              typeSpeed={50}
+              deleteSpeed={30}
+              delaySpeed={1000}
             />
           ) : (
-            'Memuat kutipan...' // Tampilkan placeholder sementara
-          )}
+            'Memuat kutipan...'
+          )} */}
+          {quote}
         </div>
       </div>
     </motion.div>

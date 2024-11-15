@@ -10,7 +10,7 @@ export default async function Page() {
   const id = generateUUID();
   const session = await auth();
 
-  let selectedModelId: string = DEFAULT_MODEL_NAME;
+  let selectedModelId: string = session ? DEFAULT_MODEL_NAME : 'gpt-4o-mini';
 
   const cookieStore = await cookies();
   const modelIdFromCookie = cookieStore.get('model-id')?.value;

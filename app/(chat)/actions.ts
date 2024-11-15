@@ -31,7 +31,7 @@ export async function generateTitleFromUserMessage({
 export async function generateQuote() {
   try {
     const result = await generateText({
-      model: customModel('gpt-4o-mini'),
+      model: customModel('gpt-3.5-turbo'),
       system: `\n
         - Kamu adalah motivator handal.
         - Hari ini adalah ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}.
